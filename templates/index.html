@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register yourself</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F0F2F5;
+            color: #333;
+        }
+        h1 {
+            color: #4B0082;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+            color: #4B0082;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        input[type="submit"] {
+            background-color: #4B0082;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #6A5ACD;
+        }
+    </style>
+</head>
+<body>
+    <h1>Registration Form</h1>
+    <form id="registrationForm" action="{{ url_for('submit_form') }}" method="POST">
+
+        <div>
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required>
+        </div>
+        <div>
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" pattern="\+91 [0-9]{10}" title="Please enter a valid Indian phone number (e.g., +91 1234567890)" required>
+        </div>
+        <div>
+            <label for="gender">Gender:</label>
+            <input type="radio" id="male" name="gender" value="male" required>
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female" required>
+            <label for="female">Female</label>
+        </div>
+        <br><br>
+        <div>
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+        </div>
+         <br><br>
+        <div>
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" min="18" max="100" required>
+        </div>
+        <div>
+            <label for="height">Height:</label>
+            <input type="text" id="feet" name="feet" placeholder="Feet" required>
+            <input type="text" id="inches" name="inches" placeholder="Inches" required>
+        </div>
+        <br>
+        <div>
+            <label for="weight">Weight (in kg):</label>
+            <input type="number" id="weight" name="weight" min="20" max="200" required>
+        </div>
+        <br>
+        <div>
+            <label for="needTrainer">Do you need a personal trainer?</label>
+            <input type="radio" id="yes" name="needTrainer" value="yes" required>
+            <label for="yes">Yes</label>
+            <input type="radio" id="no" name="needTrainer" value="no" required>
+            <label for="no">No</label>
+        </div>
+        <br>
+        <div>
+            <label for="trainedBefore">Have you trained with any personal trainer before?</label>
+            <input type="radio" id="trainedYes" name="trainedBefore" value="yes" required>
+            <label for="trainedYes">Yes</label>
+            <input type="radio" id="trainedNo" name="trainedBefore" value="no" required>
+            <label for="trainedNo">No</label>
+        </div>
+        <br>
+        <div>
+            <label for="trainTime">At what time during the day would you prefer to train?</label>
+            <input type="radio" id="morning" name="trainTime" value="morning" required>
+            <label for="morning">Morning</label>
+            <input type="radio" id="day" name="trainTime" value="day" required>
+            <label for="day">Day</label>
+            <input type="radio" id="afternoon" name="trainTime" value="afternoon" required>
+            <label for="afternoon">Afternoon</label>
+            <input type="radio" id="evening" name="trainTime" value="evening" required>
+            <label for="evening">Evening</label>
+        </div>
+        <br>
+        <div>
+            <li id="cid_127" class="form-input-wide" data-type="control_head">
+                <div class="form-header-group  header-default">
+                  <div class="header-text httal htvam">
+                    <h2 id="header_127" class="form-header" data-component="header">Terms &amp; Conditions :</h2>
+                  </div>
+                </div>
+              </li>
+              <li class="form-line" data-type="control_text" id="id_85">
+                <div id="cid_85" class="form-input-wide" data-layout="full">
+                  <div id="text_85" class="form-html" data-component="text" tabindex="0">
+                    <p>1.) CANCELLATIONS</p>
+                    <p>Cancellations should be made at least 24 hours in advance of a scheduled session. Sessions cancelled less than 24 hours in advance will be charged in full to the client.</p>
+                    <p>2.) LATE ARRIVALS</p>
+                    <p>Each session shall be 1 hour in length. Sessions will not be extended (unless time is available) due to the lateness of the client or due to interruptions caused by the client.</p>
+                    <p>3.) ALL THE INFORMATION I HAVE GIVEN IS CORRECT</p>
+                    <p>All the information on this form is correct and to the best of my knowledge. I have sought and followed any necessary medical advice. I understand that all the information given will be kept confidential.</p>
+                  </div>
+                </div>
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+    <br><br>
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function() {
+            var phoneInput = document.getElementById('phone');
+            phoneInput.value = phoneInput.value.replace(/\s/g, ''); // Remove all spaces
+        });
+    </script>
+</body>
+</html>
